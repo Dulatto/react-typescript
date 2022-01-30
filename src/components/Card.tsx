@@ -9,15 +9,17 @@ interface CardProps {
     width?: string;
     height?: string;
     variant: CardVariant;
+    onClick: () => void;
     
 }
 
-const Card: FC<CardProps> = ({width, height, children, variant}) => {
+const Card: FC<CardProps> = ({width, height, children, onClick, variant}) => {
     return (
         <div style={{width, height, 
         border: variant === CardVariant.outlined ? '1px solid gray' : 'none',
         background: variant === CardVariant.primary ? 'lightgray' : ''
-        }}>
+        }}
+        onClick={onClick}>
             {children}
         </div>
     );
