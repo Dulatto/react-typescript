@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card, {CardVariant} from './components/Card';
 import UserList from './components/UserList';
 import { IUser } from './types/types';
 
 const App = () => {
 
-  const users: IUser[]=[
-    {id:1, name: 'Ulbi tv', email:'asf@gmail.com', address: {city:'Montreal', street: 'decary', zipcode: '345678'}},
-    {id:2, name: 'Timur', email:'asf@gmail.com', address: {city:'Toronto', street: 'decary', zipcode: '345555'}}
-  ]
+  const [users, setUsers] = useState<IUser[]>([]);
+
+  
 
   return (
     <div>
