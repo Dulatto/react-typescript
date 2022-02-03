@@ -8,16 +8,24 @@ import UserItem from './components/UserItem';
 import UserList from './components/UserList';
 import { ITodo, IUser } from './types/types';
 import { BrowserRouter, Route } from 'react-router-dom';
+import UsersPage from './components/UsersPage';
+import TodosPage from './components/TodosPage';
 
 const App = () => {
 
 
 
   return (
-    <div>
-    
-    
-    </div>
+   <BrowserRouter>
+   <div>
+     <Route path={'/users'} exact>
+       <UsersPage/>
+     </Route>
+     <Route path={'/todos'} exact>
+       <TodosPage />
+     </Route>
+   </div>   
+   </BrowserRouter>
   );
 };
 
