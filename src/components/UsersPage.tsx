@@ -1,10 +1,32 @@
-import React, { FC } from 'react';
+import React, { FC, useState, useEffect } from 'react';
+import List from './List';
+import UserItem from './UserItem';
+import axios from 'axios';
+import { IUser } from '../types/types';
 
 const UsersPage: FC= () => {
-    return (
-        <div>
-            
-        </div>
+
+    const [users, setUsers] = useState<IUser[]>([]);
+
+
+  useEffect(() => {
+     fetchUsers()    
+  }, [])
+
+  async function fetchUsers(){
+    try{
+      const response = await axios.get<IUser[]>('https://jsonplaceholder.typicode.com/users')
+      setUsers(response.data)
+    } catch(e){
+      alert(e)
+    }
+  }
+    return (      
+             <List 
+               items={users} 
+               renderItem={(user: IUser) => <UserItem user={user} key={user.id}/>} 
+     />
+        
     );
 };
 
