@@ -3,11 +3,12 @@ import List from './List';
 import UserItem from './UserItem';
 import axios from 'axios';
 import { IUser } from '../types/types';
+import {useHistory} from 'react-router-dom';
 
 const UsersPage: FC= () => {
 
     const [users, setUsers] = useState<IUser[]>([]);
-
+    const history = useHistory();
 
   useEffect(() => {
      fetchUsers()    
@@ -24,7 +25,11 @@ const UsersPage: FC= () => {
     return (      
              <List 
                items={users} 
-               renderItem={(user: IUser) => <UserItem user={user} key={user.id}/>} 
+               renderItem={(user: IUser) => 
+               <UserItem 
+               onClick={(user) => history.push('/users/' + user.id)}
+               user={user} 
+               key={user.id}/>} 
      />
         
     );
