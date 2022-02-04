@@ -34,7 +34,7 @@ const App = () => {
        <UserItemPage/>
      </Route>
      <Route path={'/todos/:id'}>
-       <TodoItemPage />
+       <TodoItemPage /> 
      </Route>
    </div>   
    </BrowserRouter>
